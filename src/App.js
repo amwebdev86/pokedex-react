@@ -8,9 +8,7 @@ function App({ login }) {
     <Router>
       <h1>Home</h1>
       <nav>
-        <Link to='/'>Home</Link>
-
-        <Link to='/pokemon'>pokemon</Link>
+        <Link to='/'>Pokedex</Link>
       </nav>
       <Switch>
         <Route exact path='/'>

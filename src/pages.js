@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useParams, useRouteMatch } from 'react-router-dom';
+import Display from './components/pokedexDisplay';
 
 import Search from './components/searchForm';
+import { hectoToKilogram } from './utils/convert';
 
 // Home
 export function PokedexHome() {
@@ -35,7 +37,17 @@ export function PokedexHome() {
       <h1>Pokedex</h1>
 
       <Search handleSubmit={handleSubmit} />
-      <Link to={'/pokemon/' + data.id}>{data.name}</Link>
+      <Display
+        name={data.name}
+        id={data.id}
+        order={data.order}
+        baseXP={data.base_experience}
+        height={data.height}
+        weight={hectoToKilogram(data.weight)}
+      />
+      <Link className='btn btn-link' to={'/pokemon/' + data.id}>
+        Details
+      </Link>
     </div>
   ) : (
     <>
@@ -65,10 +77,13 @@ export function Pokemon() {
   return !id ? (
     <h1>Pokemon will display here </h1>
   ) : (
-    <h1>
-      {data.id}
-      {data.name}
-    </h1>
+    <>
+      <h1>
+        {data.id}
+        {data.name}
+      </h1>
+      <Link to='/'>Back</Link>
+    </>
   );
 }
 
