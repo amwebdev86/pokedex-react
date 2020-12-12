@@ -50,10 +50,26 @@ export function PokedexHome() {
 export function Pokemon() {
   let { url } = useRouteMatch();
   let { id } = useParams();
-  console.log(url);
-  console.log(id);
+  const [data, setData] = useState({
+    id: id,
+    name: null,
+  });
 
-  return !id ? <h1>Pokemon </h1> : <h1>Pokemon {id}</h1>;
+  useEffect(() => {
+    fetch(`https://pokeapi.co/api/v2${url}`)
+      .then((response) => response.json())
+      .then(setData)
+      .catch((err) => console.error(err));
+  }, []);
+  console.log(url);
+  return !id ? (
+    <h1>Pokemon will display here </h1>
+  ) : (
+    <h1>
+      {data.id}
+      {data.name}
+    </h1>
+  );
 }
 
 export function NotFound404() {
