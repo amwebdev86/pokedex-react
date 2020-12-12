@@ -72,7 +72,7 @@ export function Pokemon() {
       .then((response) => response.json())
       .then(setData)
       .catch((err) => console.error(err));
-  }, []);
+  }, [url]);
   console.log(url);
   return !id ? (
     <h1>Pokemon will display here </h1>
