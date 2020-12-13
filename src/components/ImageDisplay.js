@@ -1,7 +1,7 @@
 import { generateKeyProp } from '../utils';
 import './css/ImageDisplay.css';
 export default function ImageDisplay({ srcURLs, mode = 'list' }) {
-  if (typeof mode === 'string') mode = null;
+  if (typeof mode !== 'string') mode = 'gallery';
   let imgDivClass = '';
   switch (mode) {
     case 'gallery':
@@ -20,6 +20,7 @@ export default function ImageDisplay({ srcURLs, mode = 'list' }) {
     <div className={imgDivClass}>
       {srcURLs.map((url) => (
         <img
+          className={imgDivClass + '-item'}
           src={url}
           key={generateKeyProp()}
           alt='the pokemon sprites from the game'

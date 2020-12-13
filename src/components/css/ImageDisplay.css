@@ -1,6 +1,19 @@
+img {
+  max-width: 200px;
+  width: 50%;
+}
 .img-list {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
   align-items: center;
+  border: 10px solid #ffcb05;
+}
+.img-list-item {
+  padding: 10px;
+}
+.img-gallery-item {
+  padding: 5px;
+}
+.img-gallery-item:hover {
+  border: 1px solid #a52422;
 }

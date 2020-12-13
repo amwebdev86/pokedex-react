@@ -6,10 +6,15 @@ import { Pokemon, PokedexHome, NotFound404 } from './pages';
 function App({ login }) {
   return (
     <Router>
-      <h1>Home</h1>
-      <nav>
-        <Link to='/'>Pokedex</Link>
-      </nav>
+      <header className='App-header'>
+        <h1>Home</h1>
+        <nav>
+          <Link className='App-btn-link' to='/'>
+            Pokedex
+          </Link>
+        </nav>
+      </header>
+
       <Switch>
         <Route exact path='/'>
           <PokedexHome />

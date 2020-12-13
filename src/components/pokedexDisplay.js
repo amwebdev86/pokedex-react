@@ -18,7 +18,7 @@ export default function Display({
     <div className='display'>
       <main>
         <h1>{name.toUpperCase()}</h1>
-        <ImageDisplay srcURLs={picTestArr} mode='list' />
+        <ImageDisplay srcURLs={picTestArr} mode='gallery' />
         <section>
           <table>
             <thead>
