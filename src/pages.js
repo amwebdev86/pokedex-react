@@ -1,25 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { Link, useParams, useRouteMatch } from 'react-router-dom';
-import ImageDisplay from './components/ImageDisplay';
 import Display from './components/PokedexDisplay';
 
 import Search from './components/SearchForm';
-import { hectoToKilogram } from './utils/convert';
+import { hectoToKilogram } from './utils';
 
 // Home
 export function PokedexHome() {
-  const [data, setData] = useState({sprites: {back_female:"http://pokeapi.co/media/sprites/pokemon/back/female/12.png",
-back_shiny_female:"http://pokeapi.co/media/sprites/pokemon/back/shiny/female/12.png",
-back_default:"http://pokeapi.co/media/sprites/pokemon/back/12.png",
-front_female:"http://pokeapi.co/media/sprites/pokemon/female/12.png",
-front_shiny_female:"http://pokeapi.co/media/sprites/pokemon/shiny/female/12.png",
-back_shiny:"http://pokeapi.co/media/sprites/pokemon/back/shiny/12.png",
-front_default:"http://pokeapi.co/media/sprites/pokemon/12.png",
-front_shiny:"http://pokeapi.co/media/sprites/pokemon/shiny/12.png"
-}});
+  const [data, setData] = useState(null);
   const [query, setQuery] = useState('1'); //grabs first pokemon
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [images, setImages] = useState([]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -33,25 +25,33 @@ front_shiny:"http://pokeapi.co/media/sprites/pokemon/shiny/12.png"
       .then((response) => {
         return response.json();
       })
-      .then(setData)
+      .then((data) => {
+        setData(data);
+      })
       .then(setLoading(false))
       .catch((err) => setError(err));
-    
   }, [query]);
 
+  useMemo(() => {
+    let sprites = [];
+
+    if (data) {
+      let spritesArr = Object.values(data.sprites);
+      let newArr = spritesArr.filter((sprite) => typeof sprite === 'string');
+      sprites.push(newArr);
+      setImages(sprites);
+      console.log(sprites);
+    }
+  }, [data]);
   if (loading) return <h1 className='loading-text'>Loading...</h1>;
   if (error) return <pre>Error:{JSON.stringify(error, 'error', 2)}</pre>;
-  if (data.sprites) {
-    let sprites = Object.values(data.sprites);
-    
-    
-  }
+
   return data ? (
     <div className='pokedex'>
       <h1>Pokedex</h1>
 
       <Search handleSubmit={handleSubmit} />
-    
+
       <Display
         name={data.name}
         id={data.id}
@@ -59,6 +59,7 @@ front_shiny:"http://pokeapi.co/media/sprites/pokemon/shiny/12.png"
         baseXP={data.base_experience}
         height={data.height}
         weight={hectoToKilogram(data.weight)}
+        sprites={images}
       />
       <Link className='btn btn-link' to={'/pokemon/' + data.id}>
         Details

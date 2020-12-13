@@ -1,6 +1,6 @@
-.img-list{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+.img-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
 }
