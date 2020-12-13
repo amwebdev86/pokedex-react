@@ -1,4 +1,8 @@
-import { decimeterToMeters, hectoToKilogram, generateKeyProp } from './index';
+import {
+  decimeterToMeters,
+  hectoToKilogram,
+  generateKeyProp,
+} from '../utils/index';
 
 test('it returns a value', () => {
   expect(hectoToKilogram(10)).toEqual(1);
@@ -16,5 +20,4 @@ describe('generates a random string id', () => {
   test('it contains poke value ', () => {
     expect(expected).toContain('poke');
   });
-
 });

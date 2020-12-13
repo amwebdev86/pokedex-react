@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { Link, useParams, useRouteMatch } from 'react-router-dom';
-import Display from './components/PokedexDisplay';
+import Display from '../components/PokedexDisplay';
 
-import Search from './components/SearchForm';
-import { hectoToKilogram } from './utils';
+import Search from '../components/SearchForm';
+import { hectoToKilogram } from '../utils';
 
 // Home
 export function PokedexHome() {
@@ -15,6 +15,7 @@ export function PokedexHome() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (!e.target[0].value || e.target[0].value.startsWith('0')) return;
     let newQuery = e.target[0].value;
     setQuery(newQuery);
   };
@@ -23,6 +24,7 @@ export function PokedexHome() {
     setLoading(true);
     fetch(`https://pokeapi.co/api/v2/pokemon/${query}/`)
       .then((response) => {
+        if (!response.ok) return;
         return response.json();
       })
       .then((data) => {
@@ -44,7 +46,14 @@ export function PokedexHome() {
     }
   }, [data]);
   if (loading) return <h1 className='loading-text'>Loading...</h1>;
-  if (error) return <pre>Error:{JSON.stringify(error, 'error', 2)}</pre>;
+  if (error) {
+    return (
+      <div className='error-div'>
+        <pre>Error:{JSON.stringify(error, 'error', 2)}</pre>
+        <Link to='/'>Back to Home</Link>
+      </div>
+    );
+  }
 
   return data ? (
     <div className='pokedex'>
@@ -66,9 +75,12 @@ export function PokedexHome() {
       </Link>
     </div>
   ) : (
-    <>
-      <pre>There was an issue</pre>
-    </>
+    <div className='pokedex'>
+      <Search handleSubmit={handleSubmit} />
+      <h3 className='pokedex-failed'>
+        Nothing to Display. Try Searching again
+      </h3>
+    </div>
   );
 }
 //--------------------------

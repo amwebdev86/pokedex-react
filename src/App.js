@@ -1,12 +1,12 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
-import './App.css';
-import { Pokemon, PokedexHome, NotFound404 } from './pages';
+import './styles/App.css';
+import { Pokemon, PokedexHome, NotFound404 } from './pages/index';
 
 function App({ login }) {
   return (
     <Router>
-      <header className='App-header'>
+      <header className='App-header App'>
         <h1>Home</h1>
         <nav>
           <Link className='App-btn-link' to='/'>
