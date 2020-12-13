@@ -11,6 +11,7 @@
 .pokedex-display-table {
   background: #d6d4a0;
   margin: 0 auto;
+  margin-bottom: 15px;
 }
 .pokedex-display-table th {
   background: #333;
@@ -22,4 +23,20 @@
 }
 .pokedex-display-table td {
   text-align: center;
+}
+td,
+th {
+  border: 1px solid transparent;
+  height: 30px;
+}
+td:nth-child(even) {
+  background: #f1f1f1;
+}
+th:nth-child(even) {
+  background: #f1f1f1;
+  color: black;
+}
+tr td:hover {
+  background: #666;
+  color: #fff;
 }

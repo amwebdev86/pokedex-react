@@ -3,6 +3,6 @@ import App from '../App';
 
 test('renders an h1 element', () => {
   const { getByText } = render(<App />);
-  const h1 = getByText(/Home/);
-  expect(h1).toHaveTextContent('Home');
+  const h1 = getByText(/Menu/);
+  expect(h1).toHaveTextContent('Menu');
 });

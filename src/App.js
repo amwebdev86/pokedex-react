@@ -1,17 +1,20 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import './styles/App.css';
-import { Pokemon, PokedexHome, NotFound404 } from './pages/index';
+import { Pokemon, PokedexHome, NotFound404, PokeBattle } from './pages/index';
 
 function App({ login }) {
   return (
     <Router>
       <header className='App-header App'>
         {/* TODO: Change from home to a custom welcome message */}
-        <h1 className='App-title'>Home</h1>
+        <h1 className='App-title'>Menu</h1>
         <nav>
           <Link className='App-btn-link-2' to='/'>
             Pokedex
+          </Link>
+          <Link className='App-btn-link-2' to='/battle'>
+            Battle
           </Link>
         </nav>
       </header>
@@ -22,6 +25,9 @@ function App({ login }) {
         </Route>
         <Route path='/pokemon/:id'>
           <Pokemon />
+        </Route>
+        <Route path='/battle'>
+          <PokeBattle />
         </Route>
         <Route path='*'>
           <NotFound404 />

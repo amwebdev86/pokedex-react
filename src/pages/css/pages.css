@@ -1,11 +1,12 @@
 .pokedex {
   display: flex;
   flex-direction: column;
-  border: 10px solid red;
   width: 100%;
   max-width: 950px;
   margin: 0 auto;
+  margin-top: 30px;
   background: #4ecdc4;
+  border-radius: 5%;
 }
 .pokedex-title {
   text-align: center;
@@ -16,4 +17,26 @@
 .pokedex .details-btn {
   text-align: center;
   border: 25px solid purple;
+}
+.PokeBattle-main {
+  text-align: center;
+  color: white;
+}
+
+/* POKEMON DETAILS  */
+/* ======================================== */
+.Pokedex-details {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  border: 15px solid black;
+  margin: 0 auto;
+  background: #4ecdc4;
+}
+.Pokedex-details-name {
+  text-transform: uppercase;
+  text-align: center;
+}
+.Pokedex-details-img {
+  width: 300px;
 }

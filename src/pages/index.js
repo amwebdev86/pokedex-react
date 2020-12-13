@@ -96,26 +96,45 @@ export function Pokemon() {
   let { id } = useParams();
   const [data, setData] = useState({
     id: id,
-    name: null,
   });
+  const [image, setImage] = useState(['https://picsum.photos/200/300']);
 
   useEffect(() => {
     fetch(`https://pokeapi.co/api/v2${url}`)
       .then((response) => response.json())
-      .then(setData)
+      .then((data) => {
+        setData(data);
+        setImage(
+          Object.values(data.sprites).filter(
+            (sprite) => typeof sprite === 'string'
+          )
+        );
+      })
       .catch((err) => console.error(err));
-  }, [url]);
-  console.log(url);
+  }, [id, url]);
+  // let images = Object.values(data.sprites);
+
+  console.dir(image);
   return !id ? (
     <h1>Pokemon will display here </h1>
   ) : (
-    <>
-      <h1>
-        {data.id}
-        {data.name}
+    <div className='Pokedex-details'>
+      <h1 className='Pokedex-details-name'>
+        #{data.id}-{data.name}
       </h1>
-      <Link to='/'>Back</Link>
-    </>
+      <img src={image[0]} alt={`front facing ${data.name}`} />
+      <Link className='App-btn-link-details' to='/'>
+        Back
+      </Link>
+    </div>
+  );
+}
+
+export function PokeBattle() {
+  return (
+    <div className='PokeBattle-main'>
+      <h3>Coming Soon</h3>
+    </div>
   );
 }
 
