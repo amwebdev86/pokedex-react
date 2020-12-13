@@ -1,0 +1,19 @@
+.pokedex {
+  display: flex;
+  flex-direction: column;
+  border: 10px solid red;
+  width: 100%;
+  max-width: 950px;
+  margin: 0 auto;
+  background: #4ecdc4;
+}
+.pokedex-title {
+  text-align: center;
+  font-family: 'Press Start 2P', cursive;
+  margin: 10%;
+  text-transform: uppercase;
+}
+.pokedex .details-btn {
+  text-align: center;
+  border: 25px solid purple;
+}

@@ -1,5 +1,5 @@
 import ImageDisplay from './ImageDisplay';
-
+import './css/PokedexDisplay.css';
 export default function Display({
   id,
   name,
@@ -9,18 +9,16 @@ export default function Display({
   weight,
   sprites,
 }) {
-  let picTestArr = [
-    'https://picsum.photos/200/300',
-    'https://picsum.photos/200/300',
-    'https://picsum.photos/200/300',
-  ];
+
   return (
-    <div className='display'>
+    <div className='pokedex-display'>
       <main>
-        <h1>{name.toUpperCase()}</h1>
-        <ImageDisplay srcURLs={picTestArr} mode='gallery' />
+        <h1>
+          #{id}-{name.toUpperCase()}
+        </h1>
+        <ImageDisplay srcURLs={sprites} mode='gallery' />
         <section>
-          <table>
+          <table className='pokedex-display-table'>
             <thead>
               <tr>
                 <th>ID</th>

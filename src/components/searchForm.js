@@ -6,7 +6,7 @@ export default function Search({ handleSubmit }) {
     <form className='poke-search' onSubmit={handleSubmit}>
       <input type='text' placeholder='Enter name or ID' />
       <input
-        className='btn search-btn App-btn-link'
+        className=' App-btn-link-1 App-shadow'
         type='submit'
         value='Search'
       />

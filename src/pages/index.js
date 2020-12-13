@@ -1,3 +1,4 @@
+import './css/pages.css';
 import React, { useState, useEffect, useMemo } from 'react';
 import { Link, useParams, useRouteMatch } from 'react-router-dom';
 import Display from '../components/PokedexDisplay';
@@ -35,14 +36,11 @@ export function PokedexHome() {
   }, [query]);
 
   useMemo(() => {
-    let sprites = [];
-
     if (data) {
       let spritesArr = Object.values(data.sprites);
       let newArr = spritesArr.filter((sprite) => typeof sprite === 'string');
-      sprites.push(newArr);
-      setImages(sprites);
-      console.log(sprites);
+
+      setImages(newArr);
     }
   }, [data]);
   if (loading) return <h1 className='loading-text'>Loading...</h1>;
@@ -50,14 +48,16 @@ export function PokedexHome() {
     return (
       <div className='error-div'>
         <pre>Error:{JSON.stringify(error, 'error', 2)}</pre>
-        <Link to='/'>Back to Home</Link>
+        <Link className='App-btn-link-1' to='/'>
+          Back to Home
+        </Link>
       </div>
     );
   }
 
   return data ? (
     <div className='pokedex'>
-      <h1>Pokedex</h1>
+      <h1 className='pokedex-title'>Pokedex</h1>
 
       <Search handleSubmit={handleSubmit} />
 
@@ -70,9 +70,13 @@ export function PokedexHome() {
         weight={hectoToKilogram(data.weight)}
         sprites={images}
       />
-      <Link className='btn btn-link' to={'/pokemon/' + data.id}>
-        Details
-      </Link>
+      <div>
+        <Link
+          className='App-btn-link-details App-shadow'
+          to={'/pokemon/' + data.id}>
+          Details
+        </Link>
+      </div>
     </div>
   ) : (
     <div className='pokedex'>

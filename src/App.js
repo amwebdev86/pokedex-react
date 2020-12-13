@@ -7,9 +7,10 @@ function App({ login }) {
   return (
     <Router>
       <header className='App-header App'>
-        <h1>Home</h1>
+        {/* TODO: Change from home to a custom welcome message */}
+        <h1 className='App-title'>Home</h1>
         <nav>
-          <Link className='App-btn-link' to='/'>
+          <Link className='App-btn-link-2' to='/'>
             Pokedex
           </Link>
         </nav>

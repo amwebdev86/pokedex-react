@@ -4,34 +4,64 @@
   font-family: 'Lobster', cursive;
   font-family: 'Press Start 2P', cursive;
 }
-
+.App-shadow {
+  box-shadow: 5px 7px 5px 1px black;
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
 }
-
+.App-title {
+  text-transform: uppercase;
+  letter-spacing: 5px;
+}
 .App-header {
-  background-color: #a52422;
+  background-color: #307bfb;
   min-height: 50vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: black;
 }
-.App-btn-link {
+.App-btn-link-1 {
   text-decoration: none;
   background: #ffcb05;
   padding: 10px;
   border-radius: 5px;
+  margin: 25px;
+  font-family: 'Press Start 2P', cursive;
+}
+.App-btn-link-2 {
+  text-decoration: none;
+  background: #d6d4a0;
+  padding: 5px;
+  border-radius: 5px;
   margin: 10px;
   font-family: 'Press Start 2P', cursive;
 }
-.App-btn-link:hover {
-  background: #d9d0de;
+.App-btn-link-details {
+  display: block;
+  width: 50%;
+  text-decoration: none;
+  text-align: center;
+  background: #ffcb05;
+  padding: 5px;
+  border-radius: 5px;
+  margin: 25px auto;
+  font-family: 'Press Start 2P', cursive;
 }
-
+.App-btn-link-2:visited {
+  color: #6c596e;
+}
+.App-btn-link-2:hover {
+  background: #ffcb05;
+}
+.App-btn-link-1:hover {
+  opacity: 0.7;
+  cursor: pointer;
+}
 .App-link {
   color: #61dafb;
 }
