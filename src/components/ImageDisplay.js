@@ -14,18 +14,21 @@ export default function ImageDisplay({ srcURLs, mode = 'list' }) {
       imgDivClass = 'img-default';
   }
 
+  const images = (
+    srcURLs.map((url) => (
+      <img
+        className={imgDivClass + '-item'}
+        src={url}
+        key={generateKeyProp()}
+        alt='the pokemon sprites from the game'
+      />
+    ))
+  );
   return !srcURLs ? (
     <h3>No Images</h3>
   ) : (
     <div className={imgDivClass}>
-      {srcURLs.map((url) => (
-        <img
-          className={imgDivClass + '-item'}
-          src={url}
-          key={generateKeyProp()}
-          alt='the pokemon sprites from the game'
-        />
-      ))}
+    {images}
     </div>
   );
 }
