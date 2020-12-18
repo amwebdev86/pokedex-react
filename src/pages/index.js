@@ -97,21 +97,22 @@ export function Pokemon() {
   const [data, setData] = useState({
     id: id,
   });
-  const [image, setImage] = useState(['https://picsum.photos/200/300']);
+  const [image, setImage] = useState(['']);
 
   useEffect(() => {
-    fetch(`https://pokeapi.co/api/v2${url}`)
-      .then((response) => response.json())
-      .then((data) => {
-        setData(data);
-        setImage(
-          Object.values(data.sprites).filter(
-            (sprite) => typeof sprite === 'string'
-          )
-        );
-      })
-      .catch((err) => console.error(err));
-  }, [id, url]);
+    const fetchData = async () => {
+      const result = await fetch(
+        `https://pokeapi.co/api/v2${url}`
+      ).then((res) => res.json());
+      setData(result);
+      setImage(
+        Object.values(result.sprites).filter(
+          (sprite) => typeof sprite === 'string'
+        )
+      );
+    };
+    fetchData();
+  }, [url]);
   // let images = Object.values(data.sprites);
 
   console.dir(image);
