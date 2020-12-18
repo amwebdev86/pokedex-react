@@ -7,7 +7,7 @@ function decimeterToMeters(decimeter) {
 function generateKeyProp() {
   return 'poke' + Math.random().toString(36).substr(2, 9);
 }
-// TODO: global fetch function
+// TODO: global fetch function v1.0.1
 // const fetchData = async (url, query) => {
 //   const result = await fetch(
 //     `${url}/${query}/`
