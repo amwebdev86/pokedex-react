@@ -22,17 +22,15 @@ export function PokedexHome() {
   };
 
   useEffect(() => {
+    const fetchData = async () => {
+      const result = await fetch(
+        `https://pokeapi.co/api/v2/pokemon/${query}/`
+      ).then((res) => res.json());
+      setData(result);
+      setLoading(false);
+    };
     setLoading(true);
-    fetch(`https://pokeapi.co/api/v2/pokemon/${query}/`)
-      .then((response) => {
-        if (!response.ok) return;
-        return response.json();
-      })
-      .then((data) => {
-        setData(data);
-      })
-      .then(setLoading(false))
-      .catch((err) => setError(err));
+    fetchData();
   }, [query]);
 
   useMemo(() => {
@@ -98,6 +96,7 @@ export function Pokemon() {
     id: id,
   });
   const [image, setImage] = useState(['']);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -110,13 +109,15 @@ export function Pokemon() {
           (sprite) => typeof sprite === 'string'
         )
       );
+      setIsLoading(false);
     };
+    setIsLoading(true);
     fetchData();
   }, [url]);
   // let images = Object.values(data.sprites);
 
   console.dir(image);
-  return !id ? (
+  return isLoading ? (
     <h1>Pokemon will display here </h1>
   ) : (
     <div className='Pokedex-details'>
