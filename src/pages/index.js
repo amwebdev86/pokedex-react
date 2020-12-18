@@ -23,9 +23,11 @@ export function PokedexHome() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const result = await fetch(
-        `https://pokeapi.co/api/v2/pokemon/${query}/`
-      ).then((res) => res.json());
+      const result = await fetch(`https://pokeapi.co/api/v2/pokemon/${query}/`)
+        .then((res) => res.json())
+        .catch((err) => {
+          setError(err);
+        });
       setData(result);
       setLoading(false);
     };

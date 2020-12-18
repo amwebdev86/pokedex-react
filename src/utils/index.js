@@ -7,6 +7,14 @@ function decimeterToMeters(decimeter) {
 function generateKeyProp() {
   return 'poke' + Math.random().toString(36).substr(2, 9);
 }
+// TODO: global fetch function
+// const fetchData = async (url, query) => {
+//   const result = await fetch(
+//     `${url}/${query}/`
+//   ).then((res) => res.json());
+//   setData(result);
+//   setLoading(false);
+// };
 
 module.exports = {
   hectoToKilogram,
