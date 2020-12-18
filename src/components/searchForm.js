@@ -5,7 +5,7 @@ export default function Search({ handleSubmit }) {
   const form = (
     <form className='poke-search' onSubmit={handleSubmit}>
       <label>
-        Search:
+        <span>Search:</span>
         <input type='text' placeholder='Enter name or ID' />
       </label>
 
