@@ -1,9 +1,7 @@
 # Pokedex
 
-## Welcome to Prof. Oak's Pokedex!
+## Welcome to the _Pokedex_!
 
-Grabs information from the pokeAPI and displays it in a pokedex. Look up all the information on your favorite pokemon. Create your own pokedex and try to catch all the Pokemon
+![A Pokeball](./public/icon-192.png)
 
-Known Issues:
-
-- Sprite images are returning Not Found.
+Grabs information from the pokeAPI and displays it in a pokedex. Look up all the information on your favorite pokemon. Future updates to include battling!

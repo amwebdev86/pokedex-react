@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import './styles/App.css';
 import { Pokemon, PokedexHome, NotFound404, PokeBattle } from './pages/index';
+import ErrorBoundary from './components/ErrorBoundary';
 
 function App({ login }) {
   return (
@@ -21,16 +22,24 @@ function App({ login }) {
 
       <Switch>
         <Route exact path='/'>
-          <PokedexHome />
+          <ErrorBoundary>
+            <PokedexHome />
+          </ErrorBoundary>
         </Route>
         <Route path='/pokemon/:id'>
-          <Pokemon />
+          <ErrorBoundary>
+            <Pokemon />
+          </ErrorBoundary>
         </Route>
         <Route path='/battle'>
-          <PokeBattle />
+          <ErrorBoundary>
+            <PokeBattle />
+          </ErrorBoundary>
         </Route>
         <Route path='*'>
-          <NotFound404 />
+          <ErrorBoundary>
+            <NotFound404 />
+          </ErrorBoundary>
         </Route>
       </Switch>
     </Router>

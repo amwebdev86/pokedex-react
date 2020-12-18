@@ -2,6 +2,7 @@ import './css/pages.css';
 import React, { useState, useEffect, useMemo, Suspense } from 'react';
 import { Link, useParams, useRouteMatch } from 'react-router-dom';
 import { hectoToKilogram } from '../utils';
+//code splitting
 const DisplayComponent = React.lazy(() =>
   import('../components/PokedexDisplay')
 );
