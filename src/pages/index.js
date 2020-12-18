@@ -1,11 +1,13 @@
 import './css/pages.css';
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect, useMemo, Suspense } from 'react';
 import { Link, useParams, useRouteMatch } from 'react-router-dom';
-import Display from '../components/PokedexDisplay';
 
-import Search from '../components/SearchForm';
+//import Search from '../components/SearchForm';
 import { hectoToKilogram } from '../utils';
-
+const DisplayComponent = React.lazy(() =>
+  import('../components/PokedexDisplay')
+);
+const SearchComponent = React.lazy(() => import('../components/SearchForm'));
 // Home
 export function PokedexHome() {
   const [data, setData] = useState(null);
@@ -59,17 +61,20 @@ export function PokedexHome() {
     <div className='pokedex'>
       <h1 className='pokedex-title'>Pokedex</h1>
 
-      <Search handleSubmit={handleSubmit} />
+      {/* <Search handleSubmit={handleSubmit} /> */}
+      <Suspense fallback={<div>Loading...</div>}>
+        <SearchComponent handleSubmit={handleSubmit} />
+        <DisplayComponent
+          name={data.name}
+          id={data.id}
+          order={data.order}
+          baseXP={data.base_experience}
+          height={data.height}
+          weight={hectoToKilogram(data.weight)}
+          sprites={images}
+        />
+      </Suspense>
 
-      <Display
-        name={data.name}
-        id={data.id}
-        order={data.order}
-        baseXP={data.base_experience}
-        height={data.height}
-        weight={hectoToKilogram(data.weight)}
-        sprites={images}
-      />
       <div>
         <Link
           className='App-btn-link-details App-shadow'
@@ -80,7 +85,9 @@ export function PokedexHome() {
     </div>
   ) : (
     <div className='pokedex'>
-      <Search handleSubmit={handleSubmit} />
+      <Suspense fallback={<div>Loading...</div>}>
+        <SearchComponent handleSubmit={handleSubmit} />
+      </Suspense>
       <h3 className='pokedex-failed'>
         Nothing to Display. Try Searching again
       </h3>
