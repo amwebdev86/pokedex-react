@@ -15,7 +15,6 @@ function PokedexHome() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [images, setImages] = useState([]);
-  console.log(data);
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!e.target[0].value || e.target[0].value.startsWith('0')) return;
@@ -125,11 +124,9 @@ function Pokemon() {
     setIsLoading(true);
     fetchData();
   }, [url]);
-  // let images = Object.values(data.sprites);
 
-  console.dir(image);
   return isLoading ? (
-    <h1>Pokemon will display here </h1>
+    <h3>Loading...</h3>
   ) : (
     <div className='Pokedex-details'>
       <h1 className='Pokedex-details-name'>

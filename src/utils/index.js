@@ -16,8 +16,4 @@ function generateKeyProp() {
 //   setLoading(false);
 // };
 
-module.exports = {
-  hectoToKilogram,
-  decimeterToMeters,
-  generateKeyProp,
-};
+export { hectoToKilogram, decimeterToMeters, generateKeyProp };
