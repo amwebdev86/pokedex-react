@@ -17,7 +17,9 @@ export default function Catch(component, errorHandler) {
     componentDidCatch(error, info) {
       if (errorHandler) {
         RollebarErrorTracking.logErrorInfo(info);
-        RollebarErrorTracking.logErrorInRollbar(error);
+        if (process.env.NODE_ENV === 'production') {
+          RollebarErrorTracking.logErrorInRollbar(error);
+        }
         errorHandler(error, info);
       }
     }

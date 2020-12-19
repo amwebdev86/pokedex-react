@@ -132,7 +132,7 @@ function Pokemon() {
       <h1 className='Pokedex-details-name'>
         #{data.id}-{data.name}
       </h1>
-      <img src={image[0]} alt={`front facing ${data.name}`} />
+      <img src={image[0 + 2]} alt={`front facing ${data.name}`} />
       <Link className='App-btn-link-details' to='/'>
         Back
       </Link>

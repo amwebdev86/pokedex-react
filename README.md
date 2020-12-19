@@ -8,3 +8,11 @@
 ![A Pokeball](./public/icon-192.png)
 
 Grabs information from the pokeAPI and displays it in a pokedex. Look up all the information on your favorite pokemon. Future updates to include battling!
+
+### Red v1.0.0
+
+- Look up pokemon using the search
+
+### Red v1.0.1
+
+- Displays abilities in the Details page

@@ -11,6 +11,7 @@ export const RollebarErrorTracking = (() => {
   });
 
   const logErrorInfo = (info) => RollbarObj.info(info);
+
   const logErrorInRollbar = (error) => {
     throw new Error(error);
   };
