@@ -5,9 +5,10 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: url(../images/pokedex-background.jpg);
+  /* background: url(../images/pokedex-background.jpg);
   background-size: cover;
-  background-position: top right;
+  background-position: top right; */
+  background-color: #fdc500;
 }
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',

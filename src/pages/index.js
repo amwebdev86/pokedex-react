@@ -9,7 +9,7 @@ const DisplayComponent = React.lazy(() =>
 );
 const SearchComponent = React.lazy(() => import('../components/SearchForm'));
 // Home
-export function PokedexHome() {
+function PokedexHome() {
   const [data, setData] = useState(pokemonData);
   const [query, setQuery] = useState(pokemonData.name); //grabs first pokemon
   const [loading, setLoading] = useState(false);
@@ -45,7 +45,9 @@ export function PokedexHome() {
       setImages(newArr);
     }
   }, [data]);
+
   if (loading) return <h1 className='loading-text'>Loading...</h1>;
+
   if (error) {
     return (
       <div className='error-div'>
@@ -98,7 +100,7 @@ export function PokedexHome() {
 
 //Pokemon
 
-export function Pokemon() {
+function Pokemon() {
   let { url } = useRouteMatch();
   let { id } = useParams();
   const [data, setData] = useState({
@@ -141,7 +143,7 @@ export function Pokemon() {
   );
 }
 
-export function PokeBattle() {
+function PokeBattle() {
   return (
     <div className='PokeBattle-main'>
       <h3>Coming Soon</h3>
@@ -149,6 +151,8 @@ export function PokeBattle() {
   );
 }
 
-export function NotFound404() {
+function NotFound404() {
   return <h1 className='error'>Not Found</h1>;
 }
+
+export { PokedexHome, Pokemon, PokeBattle, NotFound404 };
