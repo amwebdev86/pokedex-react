@@ -2,6 +2,7 @@ import './css/pages.css';
 import React, { useState, useEffect, useMemo, Suspense } from 'react';
 import { Link, useParams, useRouteMatch } from 'react-router-dom';
 import { hectoToKilogram } from '../utils';
+import pokemonData from '../data/pokemonData.json';
 //code splitting
 const DisplayComponent = React.lazy(() =>
   import('../components/PokedexDisplay')
@@ -9,12 +10,12 @@ const DisplayComponent = React.lazy(() =>
 const SearchComponent = React.lazy(() => import('../components/SearchForm'));
 // Home
 export function PokedexHome() {
-  const [data, setData] = useState(null);
-  const [query, setQuery] = useState('1'); //grabs first pokemon
+  const [data, setData] = useState(pokemonData);
+  const [query, setQuery] = useState(pokemonData.name); //grabs first pokemon
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [images, setImages] = useState([]);
-
+  console.log(data);
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!e.target[0].value || e.target[0].value.startsWith('0')) return;
