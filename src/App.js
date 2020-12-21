@@ -2,47 +2,42 @@ import React from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import './styles/App.css';
 import { Pokemon, PokedexHome, NotFound404, PokeBattle } from './pages';
+import ErrorDisplay from './components/ErrorDisplay';
 import ErrorBoundary from './components/ErrorBoundary';
 
 function App({ login }) {
   return (
-    <Router>
-      <header className='App-header App'>
-        {/* TODO: Change from home to a custom welcome message */}
-        <h1 className='App-title'>Menu</h1>
-        <nav>
-          <Link className='App-btn-link-2' to='/'>
-            Pokedex
-          </Link>
-          <Link className='App-btn-link-2' to='/battle'>
-            Battle
-          </Link>
-        </nav>
-      </header>
+    <ErrorBoundary component={ErrorDisplay}>
+      <Router>
+        <header className='App-header App'>
+          {/* TODO: Change from home to a custom welcome message */}
+          <h1 className='App-title'>Menu</h1>
+          <nav>
+            <Link className='App-btn-link-2' to='/'>
+              Pokedex
+            </Link>
+            <Link className='App-btn-link-2' to='/battle'>
+              Battle
+            </Link>
+          </nav>
+        </header>
 
-      <Switch>
-        <Route exact path='/'>
-          <ErrorBoundary>
+        <Switch>
+          <Route exact path='/'>
             <PokedexHome />
-          </ErrorBoundary>
-        </Route>
-        <Route path='/pokemon/:id'>
-          <ErrorBoundary>
+          </Route>
+          <Route path='/pokemon/:id'>
             <Pokemon />
-          </ErrorBoundary>
-        </Route>
-        <Route path='/battle'>
-          <ErrorBoundary>
+          </Route>
+          <Route path='/battle'>
             <PokeBattle />
-          </ErrorBoundary>
-        </Route>
-        <Route path='*'>
-          <ErrorBoundary>
+          </Route>
+          <Route path='*'>
             <NotFound404 />
-          </ErrorBoundary>
-        </Route>
-      </Switch>
-    </Router>
+          </Route>
+        </Switch>
+      </Router>
+    </ErrorBoundary>
   );
 }
 
